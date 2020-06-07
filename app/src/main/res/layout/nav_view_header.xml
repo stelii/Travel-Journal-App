@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="200dp"
+    android:gravity="bottom"
+    android:padding="16dp"
+    android:background="@android:color/holo_red_light">
+
+    <ImageView
+        android:id="@+id/nav_view_header_profileImage"
+        android:layout_width="wrap_content"
+        android:layout_height="100dp"
+        android:src="@drawable/ic_launcher_foreground"/>
+
+    <TextView
+        android:id="@+id/nav_view_header_profileName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:maxLines="2"
+
+        android:text="My name"
+        style="@style/TextAppearance.AppCompat.Large"
+        android:fontFamily="sans-serif-smallcaps"
+        android:layout_below="@id/nav_view_header_profileImage"/>
+
+
+    <TextView
+        android:id="@+id/nav_view_header_profileEmail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:maxLines="2"
+
+        android:text="My email"
+        style="@style/TextAppearance.AppCompat.Medium"
+        android:fontFamily="monospace"
+        android:layout_below="@id/nav_view_header_profileName"
+        />
+</RelativeLayout>

@@ -15,6 +15,7 @@
         app:layout_constraintTop_toTopOf="parent"
         layout="@layout/actionbar_layout"/>
 
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <com.google.android.material.navigation.NavigationView
@@ -22,8 +23,8 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="start"
-        android:background="@android:color/white"
-
+        app:menu="@menu/nav_view_menu"
+        app:headerLayout="@layout/nav_view_header"
         />
 
 

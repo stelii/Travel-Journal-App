@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Travel Journal App</string>
+
+
+
+    <string name="nav_view_menu_Home">Home</string>
 </resources>
