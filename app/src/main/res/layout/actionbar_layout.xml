@@ -12,6 +12,7 @@
         android:elevation="4dp"
         android:theme="@style/Theme.MaterialComponents.Light.DarkActionBar"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+        app:menu="@menu/toolbar_menu"
         />
 
     <com.google.android.material.tabs.TabLayout
