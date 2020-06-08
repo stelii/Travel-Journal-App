@@ -30,23 +30,6 @@ public class MainActivity extends AppCompatActivity {
         toolbar.setTitle("");
         setSupportActionBar(toolbar);
 
-        TabLayout tabLayout = findViewById(R.id.tab_layout);
-        ViewPager2 viewPager = findViewById(R.id.viewpager2);
-
-        FragmentAdapter pagerAdapter = new FragmentAdapter(getSupportFragmentManager(),getLifecycle());
-        viewPager.setAdapter(pagerAdapter);
-
-        new TabLayoutMediator(tabLayout, viewPager, new TabLayoutMediator.TabConfigurationStrategy() {
-            @Override
-            public void onConfigureTab(@NonNull TabLayout.Tab tab, int position) {
-                switch (position){
-                    case 0 : tab.setText("Home");
-                    break ;
-                    case 1 : tab.setText("Favorite trips");
-                    break ;
-                }
-            }
-        }).attach();
 
             navigationView = findViewById(R.id.navigation_view);
             drawerLayout = findViewById(R.id.drawer_layout);
@@ -72,4 +55,6 @@ public class MainActivity extends AppCompatActivity {
         if(drawerLayout.isDrawerOpen(navigationView)) drawerLayout.closeDrawer(navigationView);
         else super.onBackPressed();
     }
+
+
 }

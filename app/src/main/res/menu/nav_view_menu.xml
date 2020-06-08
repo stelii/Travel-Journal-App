@@ -3,4 +3,7 @@
     <item android:title="@string/nav_view_menu_Home"
         android:icon="@drawable/ic_home_black_24dp"/>
 
+    <item android:title="Favorite Trips"
+        android:icon="@drawable/ic_favorite_black_24dp"/>
+
 </menu>
