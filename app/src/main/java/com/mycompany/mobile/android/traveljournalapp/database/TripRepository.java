@@ -33,6 +33,10 @@ public class TripRepository {
         new DeleteAllAsyncTask(tripDao).execute();
     }
 
+    public void update(Trip trip){
+        new UpdateAsyncTask(tripDao).execute(trip);
+    }
+
 
     private class InsertAsyncTask extends AsyncTask<Trip,Void,Void>{
         private TripDao tripDao ;
@@ -72,6 +76,20 @@ public class TripRepository {
         @Override
         protected Void doInBackground(Void... voids) {
             tripDao.deleteAll();
+            return null;
+        }
+    }
+
+    private class UpdateAsyncTask extends AsyncTask<Trip,Void,Void>{
+        private TripDao tripDao ;
+
+        public UpdateAsyncTask(TripDao tripDao){
+            this.tripDao = tripDao;
+        }
+
+        @Override
+        protected Void doInBackground(Trip... trips) {
+            tripDao.update(trips[0]);
             return null;
         }
     }
