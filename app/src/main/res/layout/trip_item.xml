@@ -12,12 +12,22 @@
         android:layout_height="match_parent"
         android:padding="8dp">
 
+        <ImageView
+            android:id="@+id/item_image"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:adjustViewBounds="true"
+            android:foreground="@drawable/rounded_image"
+
+            />
+
         <TextView
             android:id="@+id/text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="THIS IS A TEST"
-            style="@style/TextAppearance.AppCompat.Large"/>
+            style="@style/TextAppearance.AppCompat.Large"
+            android:layout_toEndOf="@id/item_image"/>
 
         <TextView
             android:id="@+id/text2"
@@ -25,7 +35,8 @@
             android:layout_height="wrap_content"
             android:text="THIS IS A DESTINATION"
             style="@style/TextAppearance.AppCompat.Large"
-            android:layout_below="@+id/text"/>
+            android:layout_below="@+id/text"
+            android:layout_toEndOf="@id/item_image"/>
 
     </RelativeLayout>
 
