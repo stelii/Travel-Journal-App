@@ -1,6 +1,7 @@
 package com.mycompany.mobile.android.traveljournalapp.database;
 
 import androidx.annotation.Nullable;
+import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
@@ -16,6 +17,7 @@ public class Trip {
     private String imageURL ;
     private String type ;
 
+    @ColumnInfo(defaultValue = "false")
     private boolean favorite ;
     private int rating ;
 

@@ -66,10 +66,10 @@ public class HomeFragment extends Fragment {
         fab.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-//                Trip trip = new Trip("trip " + count, "destination " + count,
-//                        "399");
-//                count++;
-//                viewModel.insert(trip);
+                Trip trip = new Trip("Worst Trip","Las Vegas ",
+                        "399");
+                trip.setFavorite(true);
+                viewModel.insert(trip);
             }
         });
     }

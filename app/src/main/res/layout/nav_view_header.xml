@@ -4,7 +4,7 @@
     android:layout_height="200dp"
     android:gravity="bottom"
     android:padding="16dp"
-    android:background="@android:color/holo_red_light">
+    android:background="@android:color/holo_blue_light">
 
     <ImageView
         android:id="@+id/nav_view_header_profileImage"

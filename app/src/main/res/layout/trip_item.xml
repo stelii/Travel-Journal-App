@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="200dp"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_margin="8dp"
     app:cardCornerRadius="12dp"
-    app:cardElevation="8dp"
-    android:layout_margin="8dp">
+    app:cardElevation="8dp">
 
-    <RelativeLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:padding="8dp">
@@ -18,26 +19,55 @@
             android:layout_height="200dp"
             android:adjustViewBounds="true"
             android:foreground="@drawable/rounded_image"
+            android:src="@drawable/new_york"
 
-            />
-
-        <TextView
-            android:id="@+id/text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="THIS IS A TEST"
-            style="@style/TextAppearance.AppCompat.Large"
-            android:layout_toEndOf="@id/item_image"/>
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/text2"
+            android:id="@+id/item_name"
+            style="@style/TextAppearance.AppCompat.Large"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="THIS IS A DESTINATION"
-            style="@style/TextAppearance.AppCompat.Large"
-            android:layout_below="@+id/text"
-            android:layout_toEndOf="@id/item_image"/>
+            android:layout_marginTop="32dp"
+            android:fontFamily="@font/yantramanav_medium"
+            android:text="Best trip"
+            app:layout_constraintStart_toEndOf="@id/item_image"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    </RelativeLayout>
+        <TextView
+            android:id="@+id/item_destination"
+            style="@style/TextAppearance.AppCompat.Large"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/item_name"
+
+            android:fontFamily="@font/yantramanav_light"
+            android:text="New York"
+            app:layout_constraintStart_toEndOf="@id/item_image"
+            app:layout_constraintTop_toBottomOf="@id/item_name"
+            tools:layout_editor_absoluteX="215dp"
+            tools:layout_editor_absoluteY="66dp" />
+
+        <RatingBar
+            android:id="@+id/item_ratingBar"
+            style="?attr/ratingBarStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:isIndicator="true"
+
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <ImageView
+            android:id="@+id/item_bookmark"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_star_empty_24dp"
+
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.cardview.widget.CardView>

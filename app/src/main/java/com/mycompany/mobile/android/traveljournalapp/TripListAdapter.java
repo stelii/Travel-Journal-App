@@ -4,6 +4,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -44,6 +45,11 @@ public class TripListAdapter extends RecyclerView.Adapter<TripListAdapter.TripVi
     @Override
     public void onBindViewHolder(@NonNull TripViewHolder holder, int position) {
         Trip trip = mDiffer.getCurrentList().get(position);
+        if(trip.isFavorite()){
+            holder.tripBookmark.setImageResource(R.drawable.ic_star_black_filled_24dp);
+        }else{
+            holder.tripBookmark.setImageResource(R.drawable.ic_star_empty_24dp);
+        }
 
         holder.tripName.setText(trip.getName());
         holder.tripDestination.setText(trip.getDestination());
@@ -63,12 +69,14 @@ public class TripListAdapter extends RecyclerView.Adapter<TripListAdapter.TripVi
     public class TripViewHolder extends RecyclerView.ViewHolder {
         private TextView tripName ;
         private TextView tripDestination ;
+        private ImageView tripBookmark ;
 
         public TripViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            tripName = itemView.findViewById(R.id.text);
-            tripDestination = itemView.findViewById(R.id.text2);
+            tripName = itemView.findViewById(R.id.item_name);
+            tripDestination = itemView.findViewById(R.id.item_destination);
+            tripBookmark = itemView.findViewById(R.id.item_bookmark);
         }
     }
 }
