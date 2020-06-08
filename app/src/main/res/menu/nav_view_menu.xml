@@ -6,4 +6,15 @@
     <item android:title="Favorite Trips"
         android:icon="@drawable/ic_favorite_black_24dp"/>
 
+    <item android:title="About us"
+        android:icon="@drawable/ic_about_us_24dp"
+        />
+    <item android:title="Contact"
+        android:icon="@drawable/ic_perm_contact_calendar_black_24dp"
+        />
+    <item android:title="Share"
+        android:icon="@drawable/ic_share_black_24dp"
+        />
+
+
 </menu>
