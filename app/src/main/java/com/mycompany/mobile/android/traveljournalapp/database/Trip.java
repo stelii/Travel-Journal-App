@@ -1,5 +1,6 @@
 package com.mycompany.mobile.android.traveljournalapp.database;
 
+import androidx.annotation.Nullable;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
@@ -87,5 +88,21 @@ public class Trip {
 
     public void setRating(int rating) {
         this.rating = rating;
+    }
+
+
+    @Override
+    public boolean equals(@Nullable Object obj) {
+        if(obj instanceof Trip){
+            Trip trip = (Trip) obj ;
+
+            return trip.name.equals(this.name)
+                    && trip.destination.equals(this.destination);
+//                    && trip.price.equals(this.price) && trip.imageURL.equals(this.imageURL)
+//                    && trip.type.equals(this.type) && trip.favorite == this.favorite
+//                    && trip.rating == this.rating ;
+        }
+
+        return false ;
     }
 }

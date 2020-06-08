@@ -4,19 +4,28 @@
     android:layout_height="200dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     app:cardCornerRadius="12dp"
-    app:cardElevation="8dp">
+    app:cardElevation="8dp"
+    android:layout_margin="8dp">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="8dp"
-        android:background="@android:color/darker_gray">
+        android:padding="8dp">
 
         <TextView
+            android:id="@+id/text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="THIS IS A TEST"
             style="@style/TextAppearance.AppCompat.Large"/>
+
+        <TextView
+            android:id="@+id/text2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="THIS IS A DESTINATION"
+            style="@style/TextAppearance.AppCompat.Large"
+            android:layout_below="@+id/text"/>
 
     </RelativeLayout>
 
