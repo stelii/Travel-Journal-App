@@ -100,7 +100,6 @@ public class Trip {
 
             return trip.name.equals(this.name)
                     && trip.destination.equals(this.destination);
-
 //                    && trip.price.equals(this.price) && trip.imageURL.equals(this.imageURL)
 //                    && trip.type.equals(this.type) && trip.favorite == this.favorite
 //                    && trip.rating == this.rating ;

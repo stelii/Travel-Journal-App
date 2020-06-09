@@ -1,8 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <array name="preloaded_fonts" translatable="false">
+        <item>@font/aclonica</item>
+        <item>@font/actor</item>
+        <item>@font/allerta</item>
         <item>@font/amaranth</item>
+        <item>@font/anton</item>
         <item>@font/archivo_narrow_bold</item>
+        <item>@font/baloo</item>
+        <item>@font/yantramanav</item>
         <item>@font/yantramanav_light</item>
         <item>@font/yantramanav_medium</item>
     </array>

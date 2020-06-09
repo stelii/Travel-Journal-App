@@ -17,6 +17,8 @@ import com.mycompany.mobile.android.traveljournalapp.database.Trip;
 import java.util.List;
 
 public class TripListAdapter extends RecyclerView.Adapter<TripListAdapter.TripViewHolder> {
+    private BookmarkListener bookmarkListener;
+
 
     private static final String TAG = "TRIPLISTADAPTER";
     private final AsyncListDiffer<Trip> mDiffer = new AsyncListDiffer<Trip>(this,DIFF_CALLBACK);
@@ -64,6 +66,10 @@ public class TripListAdapter extends RecyclerView.Adapter<TripListAdapter.TripVi
         mDiffer.submitList(submitedList);
     }
 
+    public void setBookmarkListener(BookmarkListener bookmarkListener){
+        this.bookmarkListener = bookmarkListener;
+    }
+
 
 
     public class TripViewHolder extends RecyclerView.ViewHolder {
@@ -77,6 +83,29 @@ public class TripListAdapter extends RecyclerView.Adapter<TripListAdapter.TripVi
             tripName = itemView.findViewById(R.id.item_name);
             tripDestination = itemView.findViewById(R.id.item_destination);
             tripBookmark = itemView.findViewById(R.id.item_bookmark);
+
+            tripBookmark.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    setBookmarkStatus();
+                }
+            });
         }
+
+
+        private void setBookmarkStatus(){
+            int position = getAdapterPosition();
+            Trip selectedTrip = mDiffer.getCurrentList().get(position);
+            boolean result = bookmarkListener.changeBookmarkStatus(selectedTrip);
+
+            if(!result)  tripBookmark.setImageResource(R.drawable.ic_star_empty_24dp);
+            else tripBookmark.setImageResource(R.drawable.ic_star_black_filled_24dp);
+        }
+
+    }
+
+
+    public interface BookmarkListener{
+        boolean changeBookmarkStatus(Trip trip);
     }
 }

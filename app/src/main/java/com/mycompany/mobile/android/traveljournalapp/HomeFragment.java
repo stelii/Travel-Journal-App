@@ -27,8 +27,8 @@ import java.util.List;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class HomeFragment extends Fragment {
-    private static int count = 1 ;
+public class HomeFragment extends Fragment implements TripListAdapter.BookmarkListener {
+    private  TripViewModel viewModel;
     public static final String TAG = "HOME FRAGMENT";
 
     public HomeFragment() {
@@ -46,19 +46,20 @@ public class HomeFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        final TripListAdapter tripsAdapter = new TripListAdapter();
+        final TripListAdapter tripAdapter = new TripListAdapter();
+        tripAdapter.setBookmarkListener(this);
         RecyclerView tripList = view.findViewById(R.id.home_fragment_recyclerview);
         tripList.setLayoutManager(new LinearLayoutManager(getContext()));
-        tripList.setAdapter(tripsAdapter);
+        tripList.setAdapter(tripAdapter);
 
 
-        final TripViewModel viewModel =
+        viewModel =
                 new ViewModelProvider(this,ViewModelProvider.AndroidViewModelFactory
                 .getInstance(getActivity().getApplication())).get(TripViewModel.class);
         viewModel.getTrips().observe(getViewLifecycleOwner(), new Observer<List<Trip>>() {
             @Override
             public void onChanged(List<Trip> trips) {
-                tripsAdapter.submitList(trips);
+                tripAdapter.submitList(trips);
             }
         });
 
@@ -72,5 +73,16 @@ public class HomeFragment extends Fragment {
                 viewModel.insert(trip);
             }
         });
+    }
+
+    @Override
+    public boolean changeBookmarkStatus(Trip trip) {
+       if(!trip.isFavorite()) trip.setFavorite(true);
+       else trip.setFavorite(false);
+
+       viewModel.update(trip);
+
+       //returns true if trip is now on favorite list, false otherwise
+       return trip.isFavorite();
     }
 }
