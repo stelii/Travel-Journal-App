@@ -14,4 +14,7 @@
     <string name="navigation_drawer_close">
         Close Navigation Drawer
     </string>
+
+
+    <string name="delete_all_text">Delete All</string>
 </resources>
