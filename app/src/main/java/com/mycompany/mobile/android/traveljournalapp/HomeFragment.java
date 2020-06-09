@@ -67,12 +67,23 @@ public class HomeFragment extends Fragment implements TripListAdapter.BookmarkLi
         fab.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                Trip trip = new Trip("Worst Trip","Las Vegas ",
-                        "399");
-                trip.setFavorite(true);
-                viewModel.insert(trip);
+                launchAddEditFragment();
+//                Trip trip = new Trip("Worst Trip","Las Vegas ",
+//                        "399");
+//                trip.setFavorite(true);
+//                viewModel.insert(trip);
             }
         });
+    }
+
+    private void launchAddEditFragment(){
+        AddEditFragment fragment = new AddEditFragment();
+        FragmentManager manager = getFragmentManager();
+        manager.beginTransaction()
+                .replace(R.id.main_activity_frame_layout,fragment)
+                .addToBackStack("add_edit_fragment")
+                .commit();
+
     }
 
     @Override

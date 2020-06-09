@@ -1,14 +1,145 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="24dp"
     tools:context=".AddEditFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <EditText
+        android:id="@+id/add_edit_fragment_name_input"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content"
+        android:maxLines="1"
+        android:hint="@string/trip_name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-</FrameLayout>
+
+    <EditText
+        android:id="@+id/add_edit_fragment_destination_input"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:maxLines="1"
+        android:hint="@string/trip_destination"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/add_edit_fragment_name_input"
+        android:layout_marginTop="12dp"/>
+
+    <RadioGroup
+        android:id="@+id/add_edit_fragment_radio_group"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@id/add_edit_fragment_destination_input"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:gravity="center"
+        android:layout_marginTop="12dp">
+
+        <RadioButton
+            android:id="@+id/radio_group_city_break_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/city_break"
+            />
+
+        <RadioButton
+            android:id="@+id/radio_group_sea_side_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/sea_side"/>
+
+        <RadioButton
+            android:id="@+id/radio_group_mountains_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/mountains"/>
+
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/add_edit_fragment_price_display"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Price "
+        style="@style/TextAppearance.AppCompat.Medium"
+
+        app:layout_constraintBottom_toBottomOf="@id/add_edit_fragment_price_input"
+        app:layout_constraintTop_toBottomOf="@id/add_edit_fragment_radio_group"
+        app:layout_constraintStart_toStartOf="parent"
+        />
+
+    <SeekBar
+        android:id="@+id/add_edit_fragment_price_input"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        app:layout_constraintTop_toBottomOf="@id/add_edit_fragment_price_display"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+
+        android:layout_margin="8dp"
+        />
+
+    <TextView
+        android:id="@+id/add_edit_fragment_rating_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Rate it !"
+        style="@style/TextAppearance.AppCompat.Medium"
+        android:layout_marginTop="16dp"
+
+        app:layout_constraintTop_toBottomOf="@id/add_edit_fragment_price_input"
+        app:layout_constraintStart_toStartOf="parent"
+        />
+
+    <RatingBar
+        android:id="@+id/add_edit_fragment_rating_bar"
+        style="?attr/ratingBarStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+
+        android:layout_marginTop="24dp"
+        android:isIndicator="false"
+        app:layout_constraintStart_toEndOf="@id/add_edit_fragment_rating_text"
+        app:layout_constraintTop_toBottomOf="@id/add_edit_fragment_price_input" />
+
+    <Button
+        android:id="@+id/add_edit_fragment_gallery_photo_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Gallery Photo"
+        android:backgroundTint="@android:color/holo_green_light"
+        android:layout_marginTop="16dp"
+
+        app:layout_constraintTop_toBottomOf="@id/add_edit_fragment_rating_bar"
+        app:layout_constraintStart_toStartOf="parent"
+        />
+
+    <ImageView
+        android:id="@+id/add_edit_fragment_image_preview"
+        android:layout_width="125dp"
+        android:layout_height="150dp"
+
+        app:layout_constraintStart_toEndOf="@id/add_edit_fragment_gallery_photo_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/add_edit_fragment_rating_bar"
+        />
+
+    <Button
+        android:id="@+id/add_edit_fragment_save_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+
+        android:text="@string/save_trip"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/add_edit_fragment_gallery_photo_button" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

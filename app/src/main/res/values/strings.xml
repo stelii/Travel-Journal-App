@@ -17,4 +17,14 @@
 
 
     <string name="delete_all_text">Delete All</string>
+
+    <string name="trip_name">Trip Name</string>
+    <string name="trip_destination">Trip Destination</string>
+    <string name="city_break">City Break</string>
+    <string name="sea_side">Sea Side</string>
+    <string name="mountains">Mountains</string>
+    <string name="save_trip">Save</string>
+
+
+
 </resources>
