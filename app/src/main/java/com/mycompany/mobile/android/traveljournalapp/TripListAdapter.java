@@ -1,10 +1,12 @@
 package com.mycompany.mobile.android.traveljournalapp;
 
+import android.net.Uri;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RatingBar;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -47,14 +49,7 @@ public class TripListAdapter extends RecyclerView.Adapter<TripListAdapter.TripVi
     @Override
     public void onBindViewHolder(@NonNull TripViewHolder holder, int position) {
         Trip trip = mDiffer.getCurrentList().get(position);
-        if(trip.isFavorite()){
-            holder.tripBookmark.setImageResource(R.drawable.ic_star_black_filled_24dp);
-        }else{
-            holder.tripBookmark.setImageResource(R.drawable.ic_star_empty_24dp);
-        }
-
-        holder.tripName.setText(trip.getName());
-        holder.tripDestination.setText(trip.getDestination());
+        holder.updateTrip(trip);
     }
 
     @Override
@@ -75,14 +70,20 @@ public class TripListAdapter extends RecyclerView.Adapter<TripListAdapter.TripVi
     public class TripViewHolder extends RecyclerView.ViewHolder {
         private TextView tripName ;
         private TextView tripDestination ;
+        private TextView tripPrice ;
         private ImageView tripBookmark ;
+        private RatingBar tripRating ;
+        private ImageView tripImage ;
 
         public TripViewHolder(@NonNull View itemView) {
             super(itemView);
 
             tripName = itemView.findViewById(R.id.item_name);
             tripDestination = itemView.findViewById(R.id.item_destination);
+            tripPrice = itemView.findViewById(R.id.item_price);
             tripBookmark = itemView.findViewById(R.id.item_bookmark);
+            tripRating = itemView.findViewById(R.id.item_ratingBar);
+            tripImage = itemView.findViewById(R.id.item_image);
 
             tripBookmark.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -91,6 +92,24 @@ public class TripListAdapter extends RecyclerView.Adapter<TripListAdapter.TripVi
                 }
             });
         }
+
+    private void updateTrip(Trip trip){
+        if(trip.isFavorite()){
+            tripBookmark.setImageResource(R.drawable.ic_star_black_filled_24dp);
+        }else{
+           tripBookmark.setImageResource(R.drawable.ic_star_empty_24dp);
+        }
+            tripName.setText(trip.getName());
+            tripDestination.setText(trip.getDestination());
+            tripPrice.setText(trip.getPrice());
+            tripRating.setRating(trip.getRating());
+
+        String uri = trip.getImageURL();
+        if(uri != null){
+            Uri imageUri = Uri.parse(uri);
+            tripImage.setImageURI(imageUri);
+        }
+    }
 
 
         private void setBookmarkStatus(){
