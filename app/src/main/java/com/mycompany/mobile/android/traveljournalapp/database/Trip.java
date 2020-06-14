@@ -22,7 +22,7 @@ public class Trip {
     private String name ;
     private String destination ;
     private String price ;
-    private String imageURL ;
+    private String imageURI;
     private String type ;
 
     @ColumnInfo(defaultValue = "false")
@@ -43,7 +43,7 @@ public class Trip {
         args.putString(EXTRA_TRIP_PRICE,price);
         args.putString(EXTRA_TRIP_TYPE,type);
         args.putInt(EXTRA_TRIP_RATING,rating);
-        args.putString(EXTRA_TRIP_IMAGEURI,imageURL);
+        args.putString(EXTRA_TRIP_IMAGEURI, imageURI);
 
         return args;
     }
@@ -81,12 +81,12 @@ public class Trip {
         this.price = price;
     }
 
-    public String getImageURL() {
-        return imageURL;
+    public String getImageURI() {
+        return imageURI;
     }
 
-    public void setImageURL(String imageURL) {
-        this.imageURL = imageURL;
+    public void setImageURI(String imageURI) {
+        this.imageURI = imageURI;
     }
 
     public String getType() {

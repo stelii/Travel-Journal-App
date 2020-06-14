@@ -1,7 +1,6 @@
 package com.mycompany.mobile.android.traveljournalapp;
 
 import android.net.Uri;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -104,7 +103,7 @@ public class TripListAdapter extends RecyclerView.Adapter<TripListAdapter.TripVi
             tripPrice.setText(trip.getPrice());
             tripRating.setRating(trip.getRating());
 
-        String uri = trip.getImageURL();
+        String uri = trip.getImageURI();
         if(uri != null){
             Uri imageUri = Uri.parse(uri);
             tripImage.setImageURI(imageUri);

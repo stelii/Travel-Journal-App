@@ -18,6 +18,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RatingBar;
 import android.widget.SeekBar;
@@ -27,16 +28,18 @@ import android.widget.Toast;
 import com.mycompany.mobile.android.traveljournalapp.database.Trip;
 import com.mycompany.mobile.android.traveljournalapp.database.TripViewModel;
 
-import javax.xml.transform.Result;
-
 
 /**
  * A simple {@link Fragment} subclass.
  */
 public class AddEditFragment extends Fragment {
+    public static final int PERMISSION_REQUEST = 100;
+    public static final int PICK_IMAGE_REQUEST = 200;
+
     private EditText nameInput;
     private EditText destinationInput;
     private RadioGroup tripTypeGroup;
+    private RadioButton tripType ;
     private SeekBar priceInput;
     private RatingBar tripRatingInput;
     private Button pickImageButton;
@@ -67,7 +70,7 @@ public class AddEditFragment extends Fragment {
     }
 
     @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+    public void onViewCreated(@NonNull final View view, @Nullable Bundle savedInstanceState) {
         viewModel =
                 new ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory
                         .getInstance(getActivity().getApplication())).get(TripViewModel.class);
@@ -80,6 +83,11 @@ public class AddEditFragment extends Fragment {
         pickImageButton = view.findViewById(R.id.add_edit_fragment_gallery_image_button);
         imagePreview = view.findViewById(R.id.add_edit_fragment_image_preview);
         priceDisplay = view.findViewById(R.id.add_edit_fragment_price_display);
+
+        Bundle args = getArguments();
+        if(args != null){
+            fillPage(args);
+        }
 
 
         priceInput.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
@@ -112,15 +120,23 @@ public class AddEditFragment extends Fragment {
         saveTripButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(saveTrip()) launchHomeFragment();
+                if(saveTrip(view)) launchHomeFragment();
             }
         });
+    }
+
+    private void fillPage(Bundle args){
+        nameInput.setText(args.getString(Trip.EXTRA_TRIP_NAME));
+        destinationInput.setText(args.getString(Trip.EXTRA_TRIP_DESTINATION));
+        priceInput.setProgress(Integer.valueOf(args.getString(Trip.EXTRA_TRIP_NAME)));
+        priceDisplay.setText(args.getString(Trip.EXTRA_TRIP_PRICE));
+        tripRatingInput.setRating(Float.parseFloat(Trip.EXTRA_TRIP_RATING));
     }
 
     private void checkPermission(){
         if(ContextCompat.checkSelfPermission(getContext(),
                         Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_DENIED){
-            requestPermissions(new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},100);
+            requestPermissions(new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},PERMISSION_REQUEST);
         }else{
             getImage();
         }
@@ -130,11 +146,11 @@ public class AddEditFragment extends Fragment {
         Intent intent = new Intent();
         intent.setType("image/*");
         intent.setAction(Intent.ACTION_OPEN_DOCUMENT);
-        startActivityForResult(intent,200);
+        startActivityForResult(intent,PICK_IMAGE_REQUEST);
     }
 
 
-    private boolean saveTrip(){
+    private boolean saveTrip(View view){
         String tripName = nameInput.getText().toString();
         String tripDestination = destinationInput.getText().toString();
         String tripPrice = String.valueOf(priceInput.getProgress());
@@ -142,8 +158,17 @@ public class AddEditFragment extends Fragment {
         String imageUri = this.imageUri;
 
         Trip trip = new Trip(tripName,tripDestination,tripPrice);
+
+        int buttonId = tripTypeGroup.getCheckedRadioButtonId();
+        tripType = view.findViewById(buttonId);
+
+        if(tripType != null){
+            String type = tripType.getText().toString();
+            trip.setType(type);
+        }
+
         trip.setRating(tripRating);
-        trip.setImageURL(imageUri);
+        trip.setImageURI(imageUri);
         viewModel.insert(trip);
         return true ;
     }
@@ -158,7 +183,7 @@ public class AddEditFragment extends Fragment {
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
 
-        if(requestCode == 100){
+        if(requestCode == PERMISSION_REQUEST){
             if(grantResults.length > 0
                 && grantResults[0] == PackageManager.PERMISSION_GRANTED){
                 getImage();
@@ -170,7 +195,7 @@ public class AddEditFragment extends Fragment {
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-       if(requestCode == 200 && resultCode == getActivity().RESULT_OK){
+       if(requestCode == PICK_IMAGE_REQUEST && resultCode == getActivity().RESULT_OK){
            Uri imageUri = data.getData();
            if(imageUri != null){
                 getContext().getContentResolver()
