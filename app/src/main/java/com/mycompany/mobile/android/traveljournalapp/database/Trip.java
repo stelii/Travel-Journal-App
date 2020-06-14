@@ -1,5 +1,7 @@
 package com.mycompany.mobile.android.traveljournalapp.database;
 
+import android.os.Bundle;
+
 import androidx.annotation.Nullable;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
@@ -7,6 +9,12 @@ import androidx.room.PrimaryKey;
 
 @Entity(tableName = "trip_table")
 public class Trip {
+    public static final String EXTRA_TRIP_NAME = "name";
+    public static final String EXTRA_TRIP_DESTINATION = "destination";
+    public static final String EXTRA_TRIP_PRICE = "price";
+    public static final String EXTRA_TRIP_IMAGEURI = "image";
+    public static final String EXTRA_TRIP_RATING = "rating";
+    public static final String EXTRA_TRIP_TYPE = "type";
 
     @PrimaryKey(autoGenerate = true)
     private int id  ;
@@ -25,6 +33,19 @@ public class Trip {
         this.name = name ;
         this.destination = destination;
         this.price = price ;
+    }
+
+    public Bundle createBundle(){
+        Bundle args = new Bundle();
+
+        args.putString(EXTRA_TRIP_NAME,name);
+        args.putString(EXTRA_TRIP_DESTINATION,destination);
+        args.putString(EXTRA_TRIP_PRICE,price);
+        args.putString(EXTRA_TRIP_TYPE,type);
+        args.putInt(EXTRA_TRIP_RATING,rating);
+        args.putString(EXTRA_TRIP_IMAGEURI,imageURL);
+
+        return args;
     }
 
     public int getId() {

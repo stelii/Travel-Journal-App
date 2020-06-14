@@ -51,6 +51,14 @@ public class AddEditFragment extends Fragment {
     public AddEditFragment() {
     }
 
+    public static AddEditFragment newInstance(Trip trip){
+        AddEditFragment fragment = new AddEditFragment();
+        Bundle args = trip.createBundle();
+        fragment.setArguments(args);
+
+        return fragment;
+    }
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
