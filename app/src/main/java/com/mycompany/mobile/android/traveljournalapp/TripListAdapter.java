@@ -19,9 +19,10 @@ import java.util.List;
 
 public class TripListAdapter extends RecyclerView.Adapter<TripListAdapter.TripViewHolder> {
     private BookmarkListener bookmarkListener;
+    private ClickListener clickListener;
 
 
-    private static final String TAG = "TRIPLISTADAPTER";
+    private static final String TAG = "TRIP_LIST_ADAPTER";
     private final AsyncListDiffer<Trip> mDiffer = new AsyncListDiffer<Trip>(this,DIFF_CALLBACK);
 
     private static final DiffUtil.ItemCallback<Trip> DIFF_CALLBACK = new DiffUtil.ItemCallback<Trip>() {
@@ -42,7 +43,7 @@ public class TripListAdapter extends RecyclerView.Adapter<TripListAdapter.TripVi
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
         View itemView = inflater.inflate(R.layout.trip_item,parent,false);
 
-        return new TripViewHolder(itemView);
+        return new TripViewHolder(itemView,clickListener);
     }
 
     @Override
@@ -64,9 +65,14 @@ public class TripListAdapter extends RecyclerView.Adapter<TripListAdapter.TripVi
         this.bookmarkListener = bookmarkListener;
     }
 
+    public void setClickListener(ClickListener clickListener){
+        this.clickListener = clickListener;
+    }
 
 
-    public class TripViewHolder extends RecyclerView.ViewHolder {
+
+    public class TripViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener,
+            View.OnLongClickListener {
         private TextView tripName ;
         private TextView tripDestination ;
         private TextView tripPrice ;
@@ -74,7 +80,9 @@ public class TripListAdapter extends RecyclerView.Adapter<TripListAdapter.TripVi
         private RatingBar tripRating ;
         private ImageView tripImage ;
 
-        public TripViewHolder(@NonNull View itemView) {
+        private ClickListener clickListener;
+
+        public TripViewHolder(@NonNull View itemView,ClickListener clickListener) {
             super(itemView);
 
             tripName = itemView.findViewById(R.id.item_name);
@@ -83,6 +91,10 @@ public class TripListAdapter extends RecyclerView.Adapter<TripListAdapter.TripVi
             tripBookmark = itemView.findViewById(R.id.item_bookmark);
             tripRating = itemView.findViewById(R.id.item_ratingBar);
             tripImage = itemView.findViewById(R.id.item_image);
+
+            this.clickListener = clickListener;
+            itemView.setOnClickListener(this);
+            itemView.setOnLongClickListener(this);
 
             tripBookmark.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -120,10 +132,26 @@ public class TripListAdapter extends RecyclerView.Adapter<TripListAdapter.TripVi
             else tripBookmark.setImageResource(R.drawable.ic_star_black_filled_24dp);
         }
 
+        @Override
+        public void onClick(View v) {
+        }
+
+        @Override
+        public boolean onLongClick(View v) {
+            int position = getAdapterPosition();
+            Trip trip = mDiffer.getCurrentList().get(position);
+            clickListener.onLongClickItem(trip);
+            return true ;
+        }
     }
 
 
     public interface BookmarkListener{
         boolean changeBookmarkStatus(Trip trip);
+    }
+
+    public interface ClickListener{
+        void onLongClickItem(Trip trip);
+        void onClickItem(Trip trip);
     }
 }

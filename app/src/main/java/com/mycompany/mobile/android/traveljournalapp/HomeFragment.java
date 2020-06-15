@@ -27,7 +27,7 @@ import java.util.List;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class HomeFragment extends Fragment implements TripListAdapter.BookmarkListener {
+public class HomeFragment extends Fragment implements TripListAdapter.BookmarkListener, TripListAdapter.ClickListener {
     private  TripViewModel viewModel;
     public static final String TAG = "HOME FRAGMENT";
 
@@ -48,6 +48,7 @@ public class HomeFragment extends Fragment implements TripListAdapter.BookmarkLi
 
         final TripListAdapter tripAdapter = new TripListAdapter();
         tripAdapter.setBookmarkListener(this);
+        tripAdapter.setClickListener(this);
         RecyclerView tripList = view.findViewById(R.id.home_fragment_recyclerview);
         tripList.setLayoutManager(new LinearLayoutManager(getContext()));
         tripList.setAdapter(tripAdapter);
@@ -95,5 +96,19 @@ public class HomeFragment extends Fragment implements TripListAdapter.BookmarkLi
 
        //returns true if trip is now on favorite list, false otherwise
        return trip.isFavorite();
+    }
+
+    @Override
+    public void onLongClickItem(Trip trip) {
+        AddEditFragment fragment = AddEditFragment.newInstance(trip);
+        getFragmentManager().beginTransaction()
+                .replace(R.id.main_activity_frame_layout,fragment)
+                .addToBackStack("add_edit_fragment")
+                .commit();
+    }
+
+    @Override
+    public void onClickItem(Trip trip) {
+
     }
 }

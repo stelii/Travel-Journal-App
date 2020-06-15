@@ -118,9 +118,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-
         android:layout_marginTop="24dp"
         android:isIndicator="false"
+        android:stepSize="0.5"
+        android:rating="1"
         app:layout_constraintStart_toEndOf="@id/add_edit_fragment_rating_text"
         app:layout_constraintTop_toBottomOf="@id/add_edit_fragment_price_input" />
 

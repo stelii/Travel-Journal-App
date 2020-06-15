@@ -9,6 +9,7 @@ import androidx.room.PrimaryKey;
 
 @Entity(tableName = "trip_table")
 public class Trip {
+    public static final String EXTRA_TRIP_ID = "id";
     public static final String EXTRA_TRIP_NAME = "name";
     public static final String EXTRA_TRIP_DESTINATION = "destination";
     public static final String EXTRA_TRIP_PRICE = "price";
@@ -27,7 +28,7 @@ public class Trip {
 
     @ColumnInfo(defaultValue = "false")
     private boolean favorite ;
-    private int rating ;
+    private float rating ;
 
     public Trip(String name,String destination,String price){
         this.name = name ;
@@ -38,15 +39,25 @@ public class Trip {
     public Bundle createBundle(){
         Bundle args = new Bundle();
 
+        args.putInt(EXTRA_TRIP_ID,id);
         args.putString(EXTRA_TRIP_NAME,name);
         args.putString(EXTRA_TRIP_DESTINATION,destination);
         args.putString(EXTRA_TRIP_PRICE,price);
         args.putString(EXTRA_TRIP_TYPE,type);
-        args.putInt(EXTRA_TRIP_RATING,rating);
+        args.putFloat(EXTRA_TRIP_RATING,rating);
         args.putString(EXTRA_TRIP_IMAGEURI, imageURI);
 
         return args;
     }
+
+//    public Trip createTrip(Bundle args){
+//        int id = args.getInt(EXTRA_TRIP_ID,-1);
+//        String name = args.getString(EXTRA_TRIP_NAME);
+//        String destination = args.getString(EXTRA_TRIP_DESTINATION);
+//        String price = args.getString(EXTRA_TRIP_PRICE,"-1");
+//
+//
+//    }
 
     public int getId() {
         return id;
@@ -105,11 +116,11 @@ public class Trip {
         this.favorite = favorite;
     }
 
-    public int getRating() {
+    public float getRating() {
         return rating;
     }
 
-    public void setRating(int rating) {
+    public void setRating(float rating) {
         this.rating = rating;
     }
 
