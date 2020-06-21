@@ -102,6 +102,8 @@ public class TripListAdapter extends RecyclerView.Adapter<TripListAdapter.TripVi
                     setBookmarkStatus();
                 }
             });
+
+
         }
 
     private void updateTrip(Trip trip){
@@ -134,6 +136,9 @@ public class TripListAdapter extends RecyclerView.Adapter<TripListAdapter.TripVi
 
         @Override
         public void onClick(View v) {
+            int position = getAdapterPosition();
+            Trip trip = mDiffer.getCurrentList().get(position);
+            clickListener.onClickItem(trip);
         }
 
         @Override

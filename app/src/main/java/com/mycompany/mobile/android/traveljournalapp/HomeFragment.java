@@ -109,6 +109,12 @@ public class HomeFragment extends Fragment implements TripListAdapter.BookmarkLi
 
     @Override
     public void onClickItem(Trip trip) {
-
+        ReadOnlyFragment fragment = ReadOnlyFragment.newInstance(trip);
+        getFragmentManager().beginTransaction()
+                .replace(R.id.main_activity_frame_layout,fragment)
+                .addToBackStack("read_only_fragment")
+                .commit();
     }
+
+
 }

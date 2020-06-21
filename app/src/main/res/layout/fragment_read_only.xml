@@ -11,13 +11,13 @@
     <TextView
         android:id="@+id/read_only_fragment_trip_name"
         android:layout_width="wrap_content"
-        android:layout_height="50dp"
+        android:layout_height="wrap_content"
         android:fontFamily="@font/advent_pro_bold"
         android:maxLines="1"
         android:text="@string/trip_name"
 
         android:textSize="36sp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -51,11 +51,12 @@
 
     <ImageView
         android:id="@+id/read_only_fragment_trip_image"
-        android:layout_width="match_parent"
-        android:layout_height="300dp"
+        android:layout_width="280dp"
+        android:layout_height="200dp"
         android:foreground="@drawable/rounded_image"
         android:scaleType="centerCrop"
         android:src="@drawable/new_york"
+
 
         app:layout_constraintTop_toBottomOf="@id/read_only_fragment_trip_weather"
         app:layout_constraintStart_toStartOf="parent"

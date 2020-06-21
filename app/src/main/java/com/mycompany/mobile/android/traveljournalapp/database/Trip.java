@@ -130,11 +130,16 @@ public class Trip {
         if(obj instanceof Trip){
             Trip trip = (Trip) obj ;
 
-            return trip.name.equals(this.name)
-                    && trip.destination.equals(this.destination);
-//                    && trip.price.equals(this.price) && trip.imageURL.equals(this.imageURL)
-//                    && trip.type.equals(this.type) && trip.favorite == this.favorite
-//                    && trip.rating == this.rating ;
+            if (false
+                    && trip.type != null) {
+                return trip.name.equals(this.name)
+                        && trip.destination.equals(this.destination)
+                        && trip.imageURI != null ? trip.imageURI.equals(this.imageURI) : trip.type.equals(this.type);
+            } else {
+                return trip.name.equals(this.name)
+                        && trip.destination.equals(this.destination)
+                        && trip.imageURI != null ? trip.imageURI.equals(this.imageURI) : false ? trip.rating == this.rating : false;
+            }
         }
 
         return false ;
