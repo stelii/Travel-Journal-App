@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ReadOnlyFragment"
+    android:padding="16dp"
+    >
+
+    <TextView
+        android:id="@+id/read_only_fragment_trip_name"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:fontFamily="@font/advent_pro_bold"
+        android:maxLines="1"
+        android:text="@string/trip_name"
+
+        android:textSize="36sp"
+        android:layout_marginTop="40dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/read_only_fragment_trip_destination"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/advent_pro_medium"
+        android:maxLines="1"
+        android:text="Madrid"
+
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/read_only_fragment_trip_name" />
+
+
+
+    <TextView
+        android:id="@+id/read_only_fragment_trip_weather"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/advent_pro_bold"
+        android:maxLines="1"
+        android:text="Weather 22 C"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/read_only_fragment_trip_destination" />
+
+    <ImageView
+        android:id="@+id/read_only_fragment_trip_image"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:foreground="@drawable/rounded_image"
+        android:scaleType="centerCrop"
+        android:src="@drawable/new_york"
+
+        app:layout_constraintTop_toBottomOf="@id/read_only_fragment_trip_weather"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
