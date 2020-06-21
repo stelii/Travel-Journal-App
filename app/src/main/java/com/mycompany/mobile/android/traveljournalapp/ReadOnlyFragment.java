@@ -12,8 +12,18 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.mycompany.mobile.android.traveljournalapp.database.Trip;
+import com.mycompany.mobile.android.traveljournalapp.database.TripRepository;
+import com.mycompany.mobile.android.traveljournalapp.retrofit.TripRetrofit;
+import com.mycompany.mobile.android.traveljournalapp.retrofit.TripWeather;
+import com.mycompany.mobile.android.traveljournalapp.retrofit.TripWeatherApis;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
 
 
 public class ReadOnlyFragment extends Fragment {
@@ -66,6 +76,38 @@ public class ReadOnlyFragment extends Fragment {
         String tempUri = args.getString(Trip.EXTRA_TRIP_IMAGEURI);
         Uri uri = Uri.parse(tempUri);
         tripImage.setImageURI(uri);
+
+
+        Retrofit retrofitInstance = TripRetrofit.getInstance();
+        TripWeatherApis apis = retrofitInstance.create(TripWeatherApis.class);
+
+        String tripDestination = args.getString(Trip.EXTRA_TRIP_DESTINATION);
+
+        Call<TripWeather> call = apis.getWeather(tripDestination,TripRetrofit.APP_ID);
+        call.enqueue(new Callback<TripWeather>() {
+            @Override
+            public void onResponse(Call<TripWeather> call, Response<TripWeather> response) {
+                if(response.isSuccessful()){
+                    TripWeather weather = response.body();
+                    if (tripWeather != null) {
+                        String cityName = weather.getCityName();
+                        double cityTemp = weather.getMain().getTemp();
+
+                        String weatherContent = "Weather : " + cityTemp;
+                        tripWeather.setText(weatherContent);
+                    }
+
+                }
+            }
+
+            @Override
+            public void onFailure(Call<TripWeather> call, Throwable t) {
+                Toast.makeText(getContext(), "Failed!", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+
+
 
     }
 }

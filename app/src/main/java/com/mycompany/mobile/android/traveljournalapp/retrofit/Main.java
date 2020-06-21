@@ -7,9 +7,9 @@ public class Main {
 
     @SerializedName("temp")
     @Expose
-    private double temp ;
+    private Double temp ;
 
-    public double getTemp() {
+    public Double getTemp() {
         return temp;
     }
 }
