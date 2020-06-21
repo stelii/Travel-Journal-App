@@ -60,4 +60,106 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
 
+    <LinearLayout
+        android:id="@+id/price_layout"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/read_only_fragment_trip_image"
+        android:layout_margin="16dp"
+        >
+
+
+        <TextView
+            android:id="@+id/read_only_fragment_trip_price_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/advent_pro"
+            android:maxLines="1"
+            android:text="Price"
+            android:textSize="20sp"
+            />
+
+        <TextView
+            android:id="@+id/read_only_fragment_trip_price_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/advent_pro_bold"
+            android:maxLines="1"
+            android:text="23392"
+            android:textSize="20sp"
+            android:layout_marginStart="10dp"
+             />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/rating_layout"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@id/price_layout"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_margin="16dp">
+
+
+        <TextView
+            android:id="@+id/read_only_fragment_trip_rating_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/advent_pro"
+            android:maxLines="1"
+            android:text="Rating"
+            android:textSize="20sp"
+            android:gravity="bottom"
+            />
+
+        <RatingBar
+            android:id="@+id/read_only_fragment_trip_rating_value"
+            style="?attr/ratingBarStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:isIndicator="true"
+
+            android:stepSize="0.5"
+            android:layout_gravity="center"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/tripType_layout"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@id/rating_layout"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_margin="16dp">
+
+
+        <TextView
+            android:id="@+id/read_only_fragment_trip_type_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/advent_pro"
+            android:maxLines="1"
+            android:text="Type"
+            android:textSize="20sp"
+            android:gravity="bottom"
+            />
+
+        <TextView
+            android:id="@+id/read_only_fragment_trip_type_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/advent_pro_bold"
+            android:maxLines="1"
+            android:text="City Break"
+            android:textSize="20sp"
+
+            android:layout_marginStart="10dp"
+            />
+
+
+    </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
