@@ -6,6 +6,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ReadOnlyFragment"
     android:padding="16dp"
+    android:background="@drawable/background_gradient"
     >
 
     <TextView

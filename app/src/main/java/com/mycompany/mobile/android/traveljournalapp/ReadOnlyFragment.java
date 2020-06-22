@@ -103,7 +103,7 @@ public class ReadOnlyFragment extends Fragment {
                         String cityName = weather.getCityName();
                         double cityTemp = weather.getMain().getTemp();
 
-                        String weatherContent = "Weather : " + cityTemp;
+                        String weatherContent = "Weather : " + cityTemp + " °C";
                         tripWeather.setText(weatherContent);
                     }
 

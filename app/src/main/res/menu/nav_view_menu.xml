@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:title="@string/nav_view_menu_Home"
+        android:id="@+id/nav_view_home_item"
         android:icon="@drawable/ic_home_black_24dp"/>
 
     <item android:title="Favorite Trips"

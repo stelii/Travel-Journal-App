@@ -17,6 +17,8 @@ import androidx.viewpager2.widget.ViewPager2;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -48,10 +50,10 @@ public class MainActivity extends AppCompatActivity {
                 new ViewModelProvider(this,ViewModelProvider.AndroidViewModelFactory
                         .getInstance(getApplication())).get(TripViewModel.class);
 
-        launchHomeFragment();
         setUpToolBar();
+        launchHomeFragment();
 
-
+        handleNavigationItems();
     }
 
     private void launchHomeFragment() {
@@ -59,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
         FragmentTransaction transaction = manager.beginTransaction();
 
         Fragment fragment = new HomeFragment();
-        transaction.add(R.id.main_activity_frame_layout, fragment)
+        transaction.replace(R.id.main_activity_frame_layout, fragment)
                 .addToBackStack("home_fragment");
         transaction.commit();
     }
@@ -82,6 +84,33 @@ public class MainActivity extends AppCompatActivity {
         MenuInflater menuInflater = getMenuInflater();
         menuInflater.inflate(R.menu.toolbar_menu, menu);
         return true;
+    }
+
+    private void handleNavigationItems(){
+        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull final MenuItem item) {
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        switch (item.getItemId()){
+                            case R.id.nav_view_home_item :
+                                getSupportFragmentManager()
+                                        .popBackStack("home_fragment",
+                                                FragmentManager.POP_BACK_STACK_INCLUSIVE);
+                                launchHomeFragment();
+                                drawerLayout.closeDrawer(Gravity.LEFT);
+
+                            default : return ;
+
+                        }
+                    }
+                },250);
+
+                drawerLayout.closeDrawer(Gravity.LEFT);
+                return true ;
+            }
+        });
     }
 
     @Override
