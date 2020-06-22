@@ -10,4 +10,10 @@
         <item name="colorSecondary">@android:color/holo_blue_light</item>
     </style>
 
+    <style name="MyTheme.NoActionBar" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
+        <item name="android:statusBarColor">@android:color/holo_blue_light</item>
+    </style>
+
 </resources>
