@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -27,8 +28,11 @@ import retrofit2.Retrofit;
 
 
 public class ReadOnlyFragment extends Fragment {
-    private TextView tripName, tripDest, tripWeather;
+    private TextView tripName, tripDest,
+            tripWeather, tripPrice,tripType;
     private ImageView tripImage;
+    private RatingBar tripRating ;
+
 
 
     public ReadOnlyFragment() {
@@ -60,7 +64,9 @@ public class ReadOnlyFragment extends Fragment {
         tripDest = view.findViewById(R.id.read_only_fragment_trip_destination);
         tripWeather = view.findViewById(R.id.read_only_fragment_trip_weather);
         tripImage = view.findViewById(R.id.read_only_fragment_trip_image);
-
+        tripPrice = view.findViewById(R.id.read_only_fragment_trip_price_value);
+        tripType = view.findViewById(R.id.read_only_fragment_trip_type_value);
+        tripRating = view.findViewById(R.id.read_only_fragment_trip_rating_value);
         displayInfo();
 
 
@@ -76,6 +82,10 @@ public class ReadOnlyFragment extends Fragment {
         String tempUri = args.getString(Trip.EXTRA_TRIP_IMAGEURI);
         Uri uri = Uri.parse(tempUri);
         tripImage.setImageURI(uri);
+
+        tripPrice.setText(args.getString(Trip.EXTRA_TRIP_PRICE));
+        tripType.setText(args.getString(Trip.EXTRA_TRIP_TYPE));
+        tripRating.setRating(args.getFloat(Trip.EXTRA_TRIP_RATING));
 
 
         Retrofit retrofitInstance = TripRetrofit.getInstance();

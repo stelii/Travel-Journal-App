@@ -28,7 +28,7 @@ import java.util.List;
  * A simple {@link Fragment} subclass.
  */
 public class HomeFragment extends Fragment implements TripListAdapter.BookmarkListener, TripListAdapter.ClickListener {
-    private  TripViewModel viewModel;
+    private TripViewModel viewModel;
     public static final String TAG = "HOME FRAGMENT";
 
     public HomeFragment() {
@@ -69,10 +69,6 @@ public class HomeFragment extends Fragment implements TripListAdapter.BookmarkLi
             @Override
             public void onClick(View v) {
                 launchAddEditFragment();
-//                Trip trip = new Trip("Worst Trip","Las Vegas ",
-//                        "399");
-//                trip.setFavorite(true);
-//                viewModel.insert(trip);
             }
         });
     }
