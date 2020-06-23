@@ -28,4 +28,10 @@
 
     <string name="welcome_app_name">Travel Journal</string>
 
+    <string name="register_text">Register here</string>
+    <string name="name_hint">Name</string>
+    <string name="email_hint">Email</string>
+    <string name="password_hint">Password</string>
+    <string name="register">Register</string>
+
 </resources>

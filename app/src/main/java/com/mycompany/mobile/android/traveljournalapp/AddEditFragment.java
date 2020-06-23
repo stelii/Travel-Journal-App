@@ -140,6 +140,8 @@ public class AddEditFragment extends Fragment {
         Log.d(TAG, "fillPage: " + "THE RATING IS: " + args.getInt(Trip.EXTRA_TRIP_RATING));
 
         this.imageUri = args.getString(Trip.EXTRA_TRIP_IMAGEURI);
+
+        priceInput.setProgress(args.getInt(Trip.EXTRA_TRIP_PRICE));
     }
 
     private void checkPermission() {
