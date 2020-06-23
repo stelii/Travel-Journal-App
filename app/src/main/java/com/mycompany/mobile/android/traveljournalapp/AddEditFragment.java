@@ -192,7 +192,7 @@ public class AddEditFragment extends Fragment {
             viewModel.insert(trip);
         }
 
-        launchHomeFragment();
+        getFragmentManager().popBackStack();
         return true;
     }
 
