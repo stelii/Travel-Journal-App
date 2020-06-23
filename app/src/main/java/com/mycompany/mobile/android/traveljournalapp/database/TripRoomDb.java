@@ -22,7 +22,6 @@ public abstract class TripRoomDb extends RoomDatabase {
             instance = Room.databaseBuilder(context.getApplicationContext(),TripRoomDb.class,
                     "trip_database")
                     .fallbackToDestructiveMigration()
-                    .addCallback(callback)
                     .build();
         }
 

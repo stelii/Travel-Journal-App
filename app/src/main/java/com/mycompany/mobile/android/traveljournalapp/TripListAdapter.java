@@ -48,7 +48,7 @@ public class TripListAdapter extends RecyclerView.Adapter<TripListAdapter.TripVi
 
     @Override
     public void onBindViewHolder(@NonNull TripViewHolder holder, int position) {
-        Trip trip = mDiffer.getCurrentList().get(position);
+        Trip trip = getItemAt(position);
         holder.updateTrip(trip);
     }
 
@@ -67,6 +67,10 @@ public class TripListAdapter extends RecyclerView.Adapter<TripListAdapter.TripVi
 
     public void setClickListener(ClickListener clickListener){
         this.clickListener = clickListener;
+    }
+
+    public Trip getItemAt(int position){
+        return mDiffer.getCurrentList().get(position);
     }
 
 
@@ -127,7 +131,7 @@ public class TripListAdapter extends RecyclerView.Adapter<TripListAdapter.TripVi
 
         private void setBookmarkStatus(){
             int position = getAdapterPosition();
-            Trip selectedTrip = mDiffer.getCurrentList().get(position);
+            Trip selectedTrip = getItemAt(position);
             boolean result = bookmarkListener.changeBookmarkStatus(selectedTrip);
 
             if(!result)  tripBookmark.setImageResource(R.drawable.ic_star_empty_24dp);
@@ -137,14 +141,14 @@ public class TripListAdapter extends RecyclerView.Adapter<TripListAdapter.TripVi
         @Override
         public void onClick(View v) {
             int position = getAdapterPosition();
-            Trip trip = mDiffer.getCurrentList().get(position);
+            Trip trip = getItemAt(position);
             clickListener.onClickItem(trip);
         }
 
         @Override
         public boolean onLongClick(View v) {
             int position = getAdapterPosition();
-            Trip trip = mDiffer.getCurrentList().get(position);
+            Trip trip = getItemAt(position);
             clickListener.onLongClickItem(trip);
             return true ;
         }
