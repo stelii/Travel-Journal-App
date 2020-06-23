@@ -70,6 +70,8 @@ public class RegisterFragment extends Fragment {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()){
+                            Toast.makeText(getContext(), "Registration Successful", Toast.LENGTH_SHORT).show();
+
                             FirebaseUser newUser = firebaseAuth.getCurrentUser();
                             UserProfileChangeRequest changeRequest =
                                     new UserProfileChangeRequest.Builder()
