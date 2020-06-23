@@ -15,7 +15,7 @@
         style="@style/TextAppearance.AppCompat.Large"
         android:fontFamily="@font/advent_pro_bold"
         android:textSize="50sp"
-
+        android:textColor="@android:color/holo_green_light"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -30,7 +30,7 @@
         app:layout_constraintTop_toBottomOf="@id/register_page_register_text"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-
+        android:inputType="textPersonName"
         android:layout_marginTop="16dp"/>
 
     <EditText
@@ -42,6 +42,7 @@
         app:layout_constraintTop_toBottomOf="@id/register_page_name_input"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        android:inputType="textEmailAddress"
 
         android:layout_marginTop="16dp"/>
 
@@ -50,6 +51,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:maxLines="1"
+        android:inputType="textPassword"
         android:hint="@string/password_hint"
         app:layout_constraintTop_toBottomOf="@id/register_page_email_input"
         app:layout_constraintStart_toStartOf="parent"
@@ -58,10 +60,11 @@
         android:layout_marginTop="16dp"/>
 
     <Button
-        android:id="@+id/register_person_button"
+        android:id="@+id/register_page_regbutton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/register"
+        android:backgroundTint="@android:color/holo_green_light"
 
         app:layout_constraintTop_toBottomOf="@id/register_page_password_input"
         app:layout_constraintStart_toStartOf="parent"
