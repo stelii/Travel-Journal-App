@@ -22,12 +22,16 @@ import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ToggleButton;
 
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.mycompany.mobile.android.traveljournalapp.database.Trip;
 import com.mycompany.mobile.android.traveljournalapp.database.TripViewModel;
 
@@ -45,6 +49,19 @@ public class MainActivity extends AppCompatActivity {
 
         navigationView = findViewById(R.id.navigation_view);
         drawerLayout = findViewById(R.id.drawer_layout);
+
+        View header = navigationView.getHeaderView(0);
+        TextView userNameItem = header.findViewById(R.id.nav_view_header_profileName);
+        TextView userEmailItem = header.findViewById(R.id.nav_view_header_profileEmail);
+
+        FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
+        if(currentUser != null){
+            String userName = currentUser.getDisplayName();
+            String userEmail = currentUser.getEmail();
+
+            userNameItem.setText(userName);
+            userEmailItem.setText(userEmail);
+        }
 
         viewModel =
                 new ViewModelProvider(this,ViewModelProvider.AndroidViewModelFactory
@@ -95,6 +112,11 @@ public class MainActivity extends AppCompatActivity {
                     public void run() {
                         switch (item.getItemId()){
                             case R.id.nav_view_home_item :
+                                Fragment f = getSupportFragmentManager().findFragmentById(R.id.main_activity_frame_layout);
+                                if(f instanceof HomeFragment){
+                                    drawerLayout.closeDrawer(Gravity.LEFT);
+                                    break;
+                                }
                                 getSupportFragmentManager()
                                         .popBackStack("home_fragment",
                                                 FragmentManager.POP_BACK_STACK_INCLUSIVE);

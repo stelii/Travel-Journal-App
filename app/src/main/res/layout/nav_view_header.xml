@@ -18,7 +18,6 @@
         android:layout_height="wrap_content"
         android:maxLines="2"
 
-        android:text="My name"
         style="@style/TextAppearance.AppCompat.Large"
         android:fontFamily="sans-serif-smallcaps"
         android:layout_below="@id/nav_view_header_profileImage"/>
@@ -30,7 +29,6 @@
         android:layout_height="wrap_content"
         android:maxLines="2"
 
-        android:text="My email"
         style="@style/TextAppearance.AppCompat.Medium"
         android:fontFamily="monospace"
         android:layout_below="@id/nav_view_header_profileName"
