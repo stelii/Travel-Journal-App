@@ -10,3 +10,9 @@ The following required functionality are completed:
 2. The user can briefly click on any item and a page will appear in which all the details of the current trip are displayed.
 3. The user can long press on any item to bring up the editable page where he can update or delete any detail of the current trip and then have any changes reflected in the trip list.
 4. The user can persist trip-list items and retrieve them properly on app restart.
+
+
+The following optional features are implemented:
+
+1. The data is persisted using Room Database.
+2. When the user is on the Detail Page of current trip-item, the weather (temeperature) in the city set as destination is displayed (The weather was persisted using Retrofit)
