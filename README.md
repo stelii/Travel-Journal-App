@@ -17,3 +17,10 @@ The following optional features are implemented:
 1. The data is persisted using Room Database.
 2. When the user is on the Detail Page of current trip-item, the weather (temeperature) in the city set as destination is displayed (The weather was persisted using Retrofit)
 3. When entering for the first in application (or when the app is reinstalled), the user is prompted to create an account. The registration is done using firebase. This functionality was implemented for testing purpose.
+
+# What was used
+1. Firebase
+2. Room Database
+3. Retrofit
+4. Recyclerview
+5. Navigation Drawer
