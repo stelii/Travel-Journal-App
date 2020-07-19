@@ -24,3 +24,5 @@ The following optional features are implemented:
 3. Retrofit
 4. Recyclerview
 5. Navigation Drawer
+
+![Travel Journal App](file:///C:/Users/steli/Downloads/travel_journal_app_gif1.gif)
