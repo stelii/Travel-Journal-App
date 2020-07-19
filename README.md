@@ -27,4 +27,3 @@ The following optional features are implemented:
 
 ![travel_journal_app_gif1](https://user-images.githubusercontent.com/51002942/87879063-f819dd00-c9f0-11ea-8ecb-34eaee0414af.gif)
 
-![travel_journal_app_gif1](https://user-images.githubusercontent.com/51002942/87879063-f819dd00-c9f0-11ea-8ecb-34eaee0414af.gif =250x250)
