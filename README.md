@@ -25,5 +25,7 @@ The following optional features are implemented:
 4. Recyclerview
 5. Navigation Drawer
 
+# Demo
+
 ![travel_journal_app_video4](https://user-images.githubusercontent.com/51002942/87879608-a6735180-c9f4-11ea-9f28-3e8deaa4d455.gif)
 
