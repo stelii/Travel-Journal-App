@@ -27,6 +27,9 @@ The following optional features are implemented:
 
 # Images 
 ![img](https://i.imgur.com/c9qvAY4.png)
+![img](https://i.imgur.com/zKzbacc.png)
+![img](https://i.imgur.com/PYLw4ML.png)
+![img](https://i.imgur.com/xXQDwAj.png)
 
 # Demo
 
